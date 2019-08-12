@@ -2,7 +2,7 @@
   <div class="login_containter">
     <div class="login_box">
       <div class="avatar_box">
-        <img src="../assets/logo.png" alt="" />
+        <img src="../assets/黑魔导少女.jpg" alt="" />
       </div>
       <el-form
         :model="loginForm"
@@ -26,10 +26,10 @@
           ></el-input>
         </el-form-item>
         <el-form-item class="btns">
-          <el-button type="primary" @click="login">
+          <el-button type="primary" size="small" @click="login">
             登录
           </el-button>
-          <el-button type="info" @click="resetLoginForm">
+          <el-button type="info" size="small" @click="resetLoginForm">
             重置
           </el-button>
         </el-form-item>
@@ -42,8 +42,8 @@ export default {
   data() {
     return {
       loginForm: {
-        username: '',
-        password: ''
+        username: 'admin',
+        password: '123456'
       },
       loginFormRules: {
         username: [
@@ -79,7 +79,7 @@ export default {
     let that = this
     document.onkeydown = function() {
       let key = window.event.keyCode
-      //验证在登录界面以及按的键是回车键enter
+      //登录界面enter
       if (that.$route.path === '/login' && key === 13) {
         that.login()
       }
