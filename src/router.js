@@ -4,8 +4,8 @@ import Login from './components/Login.vue'
 import Home from './components/Home.vue'
 import Welcome from './components/Welcome.vue'
 import Users from './components/user/Users.vue'
-import Roles from './components/roles/Roles.vue'
-import Rights from './components/rights/Rights.vue'
+import Roles from './components/authority/Roles.vue'
+import Rights from './components/authority/Rights.vue'
 
 
 
