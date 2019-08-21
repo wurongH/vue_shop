@@ -22,8 +22,10 @@
           <el-input
             v-model="loginForm.password"
             prefix-icon="el-icon-key"
-            type="password"
-          ></el-input>
+            :type="pwdType"
+          >
+            <i slot="suffix" class="el-icon-view" @click="showPwd" style="cursor:pointer"></i>
+          </el-input>
         </el-form-item>
         <el-form-item class="btns">
           <el-button type="primary" @click="login">
@@ -72,7 +74,8 @@ export default {
             trigger: 'blur'
           }
         ]
-      }
+      },
+      pwdType: 'password'
     }
   },
   created() {
@@ -108,6 +111,9 @@ export default {
     },
     resetLoginForm() {
       this.$refs.loginFormRef.resetFields()
+    },
+    showPwd() {
+      this.pwdType == 'password' ? this.pwdType='text': this.pwdType='password'
     }
   }
 }
