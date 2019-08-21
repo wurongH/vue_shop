@@ -2,14 +2,34 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './components/Login.vue'
 import Home from './components/Home.vue'
+import Welcome from './components/Welcome.vue'
+import Users from './components/user/Users.vue'
+import Roles from './components/authority/Roles.vue'
+import Rights from './components/authority/Rights.vue'
+import Categories from './components/goods/categories.vue'
+import Goods from './components/goods/goods.vue'
+import Params from './components/goods/params.vue'
 
 Vue.use(Router)
 
 const router = new Router({
   routes: [
-    {path: '/', redirect: '/login'},
-    {path: '/login', component: Login},
-    {path: '/home', component: Home}
+    { path: '/', redirect: '/login' },
+    { path: '/login', component: Login },
+    {
+      path: '/home',
+      component: Home,
+      redirect: '/welcome',
+      children: [
+        { path: '/welcome', component: Welcome },
+        { path: '/users', component: Users },
+        { path: '/roles', component: Roles },
+        { path: '/rights', component: Rights },
+        { path: '/categories', component: Categories },
+        { path: '/goods', component: Goods },
+        { path: '/params', component: Params },
+      ]
+    }
   ]
 })
 
