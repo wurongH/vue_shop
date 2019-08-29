@@ -201,8 +201,7 @@ export default {
       } else {
         this.addCateForm.cat_pid = 0
         this.addCateForm.cat_level = 0
-      }
-      
+      }     
     },
     addCate() {
       this.$refs.addCateFormRef.validate( async valid => {
