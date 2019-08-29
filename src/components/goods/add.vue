@@ -170,7 +170,7 @@ export default {
   },
   computed: {
     cateId() {
-      if (this.addForm.goods_cat.length == 3) {
+      if (this.addForm.goods_cat.length === 3) {
         return this.addForm.goods_cat[2]
       } else {
         return null
@@ -186,7 +186,7 @@ export default {
     },
     async getGateList() {
       const {data: res} = await this.$http.get('categories')
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.cateList = res.data
       } else {
         this.$message({
@@ -217,7 +217,7 @@ export default {
         const {data: res} = await this.$http.get(`categories/${this.cateId}/attributes`, {
           params: {sel: 'many'}
         })
-        if (res.meta.status == 200) {
+        if (res.meta.status === 200) {
           res.data.map( d => {
             d.attr_vals = d.attr_vals.length == 0 ? [] : d.attr_vals.split(' ')
           })
@@ -227,7 +227,7 @@ export default {
         const {data: res} = await this.$http.get(`categories/${this.cateId}/attributes`, {
           params: {sel: 'only'}
         })
-        if (res.meta.status == 200) {
+        if (res.meta.status === 200) {
           this.onlyTableData = res.data
         }          
       }
@@ -285,7 +285,7 @@ export default {
           copyForm.attrs = this.addForm.attrs
 
           const {data: res} = await this.$http.post('goods', copyForm)
-          if (res.meta.status == 201) {
+          if (res.meta.status === 201) {
             this.$message({
               message: res.meta.msg,
               type: 'success'

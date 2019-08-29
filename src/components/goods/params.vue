@@ -201,7 +201,7 @@ export default {
       return false
     },
     cateId() {
-      if (this.selectedCateKeys.length == 3) {
+      if (this.selectedCateKeys.length === 3) {
         return this.selectedCateKeys[2]
       } else {
         return null
@@ -219,7 +219,7 @@ export default {
   methods: {
     async getCateList() {
       const { data: res } = await this.$http.get('categories')
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.cateList = res.data
       } else {
         this.$message({
@@ -268,7 +268,7 @@ export default {
             attr_name: this.addForm.attr_name,
             attr_sel: this.activeName
           })
-          if (res.meta.status == 201) {
+          if (res.meta.status === 201) {
             this.$message({
               message: res.meta.msg,
               type: 'success'
@@ -289,7 +289,7 @@ export default {
       const {data: res} = await this.$http.get(`categories/${this.cateId}/attributes/${attrId}`, {
         params: {attr_sel: this.activeName}
       })
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.editForm = res.data
         this.editDialog = true
       } else {
@@ -309,7 +309,7 @@ export default {
             attr_name: this.editForm.attr_name,
             attr_sel: this.activeName            
           })
-          if (res.meta.status == 200) {
+          if (res.meta.status === 200) {
             this.$message({
               message: res.meta.msg,
               type: 'success'
@@ -335,7 +335,7 @@ export default {
       //取消删除  返回cancel
       if (confirmResult == 'confirm') {
         const {data: res} = await this.$http.delete(`categories/${this.cateId}/attributes/${attrId}`)
-        if (res.meta.status == 200) {
+        if (res.meta.status === 200) {
           this.$message({
             message: res.meta.msg,
             type: 'success'
@@ -373,7 +373,7 @@ export default {
         attr_sel: row.attr_sel,
         attr_vals: row.attr_vals.join(' ')
       })
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.$message({
           message: res.meta.msg,
           type: 'success'

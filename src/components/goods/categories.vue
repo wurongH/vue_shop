@@ -31,8 +31,8 @@
         </template>
 
         <template slot="opt" slot-scope="scope">
-          <el-button type="primary" size="small" icon="el-icon-edit" @click="showEditCateDialog(scope.row.cat_id)">编辑</el-button>
-          <el-button type="danger" size="small" icon="el-icon-delete" @click="removeCate(scope.row.cat_id)">删除</el-button>
+          <el-button type="primary" size="mini" icon="el-icon-edit" @click="showEditCateDialog(scope.row.cat_id)">编辑</el-button>
+          <el-button type="danger" size="mini" icon="el-icon-delete" @click="removeCate(scope.row.cat_id)">删除</el-button>
         </template>
       </tree-table>
       <el-pagination
@@ -127,7 +127,7 @@ export default {
         {label: '分类名称', prop: 'cat_name', minWidth: '220px'},
         {label: '是否有效', minWidth: '160px', type: 'template', template: 'isOk'},
         {label: '排序', minWidth: '160px', type: 'template', template: 'order'},
-        {label: '操作', width: '180px', type: 'template', template: 'opt'},
+        {label: '操作', width: '220px', type: 'template', template: 'opt'},
       ],
       addCateDialog: false,
       addCateForm: {
@@ -161,7 +161,7 @@ export default {
       const {data: res} = await this.$http.get('categories', {
         params: this.queryInfo
       })
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.tableData = res.data.result
         this.total = res.data.total
       } else {
@@ -185,7 +185,7 @@ export default {
       const {data: res} = await this.$http.get('categories', {
         params: { type:2 }
       })
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.parentCateList = res.data
       } else {
         this.$message({
@@ -208,7 +208,7 @@ export default {
       this.$refs.addCateFormRef.validate( async valid => {
         if (valid) {
           const {data: res} = await this.$http.post('categories', this.addCateForm)
-          if (res.meta.status == 201) {
+          if (res.meta.status === 201) {
             this.$message({
               message: res.meta.msg,
               type: 'success'
@@ -227,7 +227,7 @@ export default {
     },
     async showEditCateDialog(id) {
       const {data: res} = await this.$http.get('categories/' + id)
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.editCateForm = res.data
         this.editCateDialog = true
       } else {
@@ -243,7 +243,7 @@ export default {
           const {data: res} = await this.$http.put('categories/' + this.editCateForm.cat_id, {
             cat_name: this.editCateForm.cat_name
           })
-          if (res.meta.status == 200) {
+          if (res.meta.status === 200) {
             this.$message({
               message: res.meta.msg,
               type: 'success'
@@ -272,7 +272,7 @@ export default {
       //取消删除  返回cancel
       if (confirmResult == 'confirm') {
         const {data: res} = await this.$http.delete('categories/' + id)
-        if (res.meta.status == 200) {
+        if (res.meta.status === 200) {
           this.$message({
             message: res.meta.msg,
             type: 'success'

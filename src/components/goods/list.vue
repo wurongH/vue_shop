@@ -9,8 +9,8 @@
       <el-row :gutter="20">
         <el-col :span="5">
           <el-input 
-            size="small" 
-            placeholder="请输入内容" 
+            size="small"
+            placeholder="请输入内容"
             v-model="queryInfo.query"
             clearable
             @clear="getList"
@@ -138,7 +138,7 @@ export default {
       const {data: res} = await this.$http.get('goods', {
         params: this.queryInfo
       })
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         res.data.goods.map(d => {  
           d.add_time = util.Format(d.add_time)
         })  
@@ -164,7 +164,7 @@ export default {
       //取消删除  返回cancel
       if (confirmResult == 'confirm') {
         const {data: res} = await this.$http.delete('goods/' + goodsId)
-        if (res.meta.status == 200) {
+        if (res.meta.status === 200) {
           this.$message({
             message: res.meta.msg,
             type: 'success'
@@ -185,7 +185,7 @@ export default {
     },
     async showEditDialog(goodsId) {
       const {data: res} = await this.$http.get('goods/' + goodsId)
-      if (res.meta.status ==200) {
+      if (res.meta.status === 200) {
         this.editGoodsForm = res.data
         this.editGoodsDialog = true
       }
@@ -203,7 +203,7 @@ export default {
             goods_weight: this.editGoodsForm.goods_weight,
             goods_cat: this.editGoodsForm.goods_cat
           }) 
-          if (res.meta.status == 200) {
+          if (res.meta.status === 200) {
             this.$message({
               message: res.meta.msg,
               type: 'success'

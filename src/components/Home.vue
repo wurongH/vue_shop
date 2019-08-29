@@ -84,7 +84,7 @@ export default {
     },
     async getMenuList() {
       const { data: res } = await this.$http.get('menus')
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.meunlist = res.data
       } else {
         this.$message({

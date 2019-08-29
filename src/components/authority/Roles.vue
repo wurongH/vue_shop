@@ -17,7 +17,7 @@
           </el-button>
         </el-col>
       </el-row>
-      <el-table :data="rolesList" border stripe>
+      <el-table :data="rolesList" border stripe  row-key="id">
         <el-table-column type="expand">
           <template slot-scope="scope">
             <el-row
@@ -257,7 +257,7 @@ export default {
     //显示编辑角色
     async showEditDialog(id) {
       const { data: res } = await this.$http.get('roles/' + id)
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.editRolesForm = res.data
         this.editRolesDialog = true
       } else {
@@ -278,7 +278,7 @@ export default {
               roleDesc: this.editRolesForm.roleDesc
             }
           )
-          if (res.meta.status == 200) {
+          if (res.meta.status === 200) {
             this.$message({
               message: res.meta.msg,
               type: 'success'
@@ -309,7 +309,7 @@ export default {
       //取消删除  返回cancel
       if (confirmResult == 'confirm') {
         const { data: res } = await this.$http.delete('roles/' + id)
-        if (res.meta.status == 200) {
+        if (res.meta.status === 200) {
           this.$message({
             message: res.meta.msg,
             type: 'success'
@@ -343,7 +343,7 @@ export default {
         const { data: res } = await this.$http.delete(
           `roles/${role.id}/rights/${rightId}`
         )
-        if (res.meta.status == 200) {
+        if (res.meta.status === 200) {
           this.$message({
             message: res.meta.msg,
             type: 'success'
@@ -369,8 +369,8 @@ export default {
     //显示权限分配
     async showSetRolesDiaog(role) {
       this.roleId = role.id
-      const {data: res} = await this.$http.get('rights/tree')
-      if (res.meta.status == 200) {
+      const { data: res } = await this.$http.get('rights/tree')
+      if (res.meta.status === 200) {
         this.rightslist = res.data
         this.getLeafKeys(role, this.defKeys)
         this.showRolesCard = true
@@ -398,7 +398,7 @@ export default {
       const {data: res} = await this.$http.post(`roles/${this.roleId}/rights`, {
         rids: isStr
       })
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.$message({
           message: res.meta.msg,
           type: 'success'

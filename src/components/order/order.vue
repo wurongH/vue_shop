@@ -158,7 +158,7 @@ export default {
       const {data: res} = await this.$http.get('orders', {
         params: this.queryInfo
       })
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         res.data.goods.map(d => {
           d.create_time = util.Format(d.create_time)
         })
@@ -177,7 +177,7 @@ export default {
     // 供测试的物流单号：1106975712662
     async showLocationDialog() {
       const {data: res} = await this.$http.get('/kuaidi/1106975712662')
-      if (res.meta.status == 200) {
+      if (res.meta.status === 200) {
         this.progressInfo = res.data
         this.progressVisible = true
       } else {

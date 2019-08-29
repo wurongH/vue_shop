@@ -19,7 +19,7 @@
             :label="item.label"
           >
           </el-table-column>
-          <el-table-column 
+          <el-table-column
             align="center"
             label="权限等级"
             prop="level"
@@ -41,26 +41,26 @@ export default {
     return {
       rightList: [],
       rightColumn: [
-        { name: 'authName', label: '权限名称', minWidth: '160px' },
-        { name: 'path', label: '路径', minWidth: '160px' }      
+        { name: 'authName', label: '权限名称', minWidth: '160px'},
+        { name: 'path', label: '路径', minWidth: '160px'}      
       ]
     }
   },
-  //自适应浏览屏幕高度
+  // 自适应浏览屏幕高度
   mixins: [defaultHeight],
   created() {
     this.getRightList()
   },
   methods: {
     async getRightList() {
-      const {data: res} = await this.$http.get('rights/list')
-      if (res.meta.status == 200) {
+      const { data: res } = await this.$http.get('rights/list')
+      if (res.meta.status === 200) {
         this.rightList = res.data
       } else {
         this.$message({
           message: res.meta.msg,
           type: 'error'
-        })        
+        })
       }
     }
   }
